@@ -1,0 +1,9 @@
+E:\GitHubSource\ZSharp\Demos\DesignPatterns\DesignPattern.Test\bin\Debug\DesignPattern.Test.exe.config
+E:\Source\ZSharp\Demos\DesignPatterns\DesignPattern.Test\bin\Debug\DesignPattern.Test.exe.config
+E:\Source\ZSharp\Demos\DesignPatterns\DesignPattern.Test\bin\Debug\DesignPattern.Test.exe
+E:\Source\ZSharp\Demos\DesignPatterns\DesignPattern.Test\bin\Debug\DesignPattern.Test.pdb
+E:\Source\ZSharp\Demos\DesignPatterns\DesignPattern.Test\bin\Debug\Common.dll
+E:\Source\ZSharp\Demos\DesignPatterns\DesignPattern.Test\bin\Debug\Common.pdb
+E:\Source\ZSharp\Demos\DesignPatterns\DesignPattern.Test\obj\Debug\DesignPattern.Test.csprojResolveAssemblyReference.cache
+E:\Source\ZSharp\Demos\DesignPatterns\DesignPattern.Test\obj\Debug\DesignPattern.Test.exe
+E:\Source\ZSharp\Demos\DesignPatterns\DesignPattern.Test\obj\Debug\DesignPattern.Test.pdb

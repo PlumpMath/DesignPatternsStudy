@@ -1,0 +1,5 @@
+E:\Source\ZSharp\Demos\DesignPatterns\Command\bin\Debug\Command.pdb
+E:\Source\ZSharp\Demos\DesignPatterns\Command\obj\Debug\Command.csprojResolveAssemblyReference.cache
+E:\Source\ZSharp\Demos\DesignPatterns\Command\obj\Debug\Command.pdb
+E:\Source\ZSharp\Demos\DesignPatterns\Command\bin\Debug\Command.exe
+E:\Source\ZSharp\Demos\DesignPatterns\Command\obj\Debug\Command.exe

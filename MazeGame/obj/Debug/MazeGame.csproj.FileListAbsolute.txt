@@ -1,0 +1,5 @@
+E:\GitHubSource\ZSharp\Demos\DesignPatterns\FactoryPattern\bin\Debug\MazeGame.exe.config
+E:\GitHubSource\ZSharp\Demos\DesignPatterns\FactoryPattern\bin\Debug\MazeGame.exe
+E:\GitHubSource\ZSharp\Demos\DesignPatterns\FactoryPattern\bin\Debug\MazeGame.pdb
+E:\GitHubSource\ZSharp\Demos\DesignPatterns\FactoryPattern\obj\Debug\MazeGame.exe
+E:\GitHubSource\ZSharp\Demos\DesignPatterns\FactoryPattern\obj\Debug\MazeGame.pdb
