@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Common.BehavioralPatterns
@@ -15,6 +16,18 @@ namespace Common.BehavioralPatterns
         void Execute();
 
         Task ExecuteAsync();
+    }
+
+    public class NoCommand : ICommand
+    {
+        public void Execute()
+        {
+        }
+
+        public Task ExecuteAsync()
+        {
+            return Task.Factory.StartNew(Execute);
+        }
     }
 
     public class BaseCommand<T> : ICommand where T : class, IInput
@@ -73,32 +86,60 @@ namespace Common.BehavioralPatterns
     /// <summary>
     /// 保存Command的队列
     /// </summary>
-    public class CommandQueue : Queue<ICommand>
+    public class CommandQueue : ConcurrentQueue<ICommand>
     {
     }
 
     /// <summary>
-    /// 调用者
+    /// 调用者（队列）
     /// </summary>
-    public class Invoker
+    public class CommandQueueInvoker
     {
         /// <summary>
         /// 管理相关命令对象
         /// </summary>
-        private CommandQueue queue;
+        private static CommandQueue queue = new CommandQueue();
 
-        public Invoker()
+        /// <summary>
+        /// 开启數據同步任务
+        /// </summary>
+        private static readonly Task QueueMonitorTask = Task.Factory.StartNew(() =>
+        {
+            while (true)
+            {
+                RunQueue();
+            }
+        }, TaskCreationOptions.LongRunning);
+
+        /// <summary>
+        /// 按照队列方式执行排队的命令。相对而言，这时候Invoker
+        /// 具有执行的主动性，此处可以嵌入很多其他控制逻辑
+        /// </summary>
+        private static void RunQueue()
+        {
+            ICommand command;
+            if (queue.TryDequeue(out command))
+            {
+                try
+                {
+                    command.Execute();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                    //LogHelper.WriteException(ex);
+                }
+            }
+            Thread.Sleep(100);
+        }
+
+        public CommandQueueInvoker()
         {
         }
 
-        public Invoker(ICommand command)
+        public CommandQueueInvoker(ICommand command)
         {
             AddCommand(command);
-        }
-
-        public Invoker(CommandQueue queue)
-        {
-            this.queue = queue;
         }
 
         public void AddCommand(ICommand command)
@@ -107,19 +148,39 @@ namespace Common.BehavioralPatterns
             queue.Enqueue(command);
         }
 
-
-        /// <summary>
-        /// 按照队列方式执行排队的命令。相对而言，这时候Invoker
-        /// 具有执行的主动性，此处可以嵌入很多其他控制逻辑
-        /// </summary>
-        public void Run()
+        private void StoreCommand(ICommand command)
         {
-            while (queue.Count > 0)
+            //Store to db
+        }
+    }
+
+    /// <summary>
+    /// 调用者（普通）
+    /// </summary>
+    public class Invoker
+    {
+        ICommand[] commands;
+
+        public Invoker()
+        {
+            commands = new ICommand[7];
+
+            var noCommand = new NoCommand();
+            for (int i = 0; i < 7; i++)
             {
-                var command = queue.Dequeue();
-                command.Execute();
-                //command.ExecuteAsync();
+                commands[i] = noCommand;
             }
+        }
+
+        public void SetCommand(int slot, ICommand command)
+        {
+            StoreCommand(command);
+            commands[slot] = command;
+        }
+
+        public void DoCommand(int slot)
+        {
+           commands[slot].Execute();
         }
 
         private void StoreCommand(ICommand command)
@@ -131,9 +192,12 @@ namespace Common.BehavioralPatterns
 
     public class ConcreteCommand : BaseCommand<Input>
     {
-        public ConcreteCommand(Action<Input> action, Input input)
-            : base(action, input)
+        private Receiver receiver;
+
+        public ConcreteCommand(Receiver receiver, Input input)
+            : base(receiver.Action, input)
         {
+            this.receiver = receiver;
         }
 
         protected override bool CheckParamObject()
@@ -166,9 +230,10 @@ namespace Common.BehavioralPatterns
         {
             Receiver receiver = new Receiver();
             var input = new Input { Name = "Hello World" };
-            var cmd = new ConcreteCommand(receiver.Action, input);
-            Invoker invoker = new Invoker(cmd);
-            invoker.Run();
+            var cmd = new ConcreteCommand(receiver, input);
+            Invoker invoker = new Invoker();
+            invoker.SetCommand(1, cmd);
+            invoker.DoCommand(1);
         }
     }
 }

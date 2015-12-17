@@ -41,7 +41,7 @@ namespace Command
             offCommands[slot].Execute();
         }
 
-        public string ToString()
+        public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("\n-----Remote Control-----\n");

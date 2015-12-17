@@ -3,3 +3,8 @@ E:\Source\ZSharp\Demos\DesignPatterns\Common\bin\Debug\Common.pdb
 E:\Source\ZSharp\Demos\DesignPatterns\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 E:\Source\ZSharp\Demos\DesignPatterns\Common\obj\Debug\Common.dll
 E:\Source\ZSharp\Demos\DesignPatterns\Common\obj\Debug\Common.pdb
+E:\Source\DesignPatterns\Common\obj\Debug\Common.dll
+E:\Source\DesignPatterns\Common\obj\Debug\Common.pdb
+E:\Source\DesignPatterns\Common\bin\Debug\Common.dll
+E:\Source\DesignPatterns\Common\bin\Debug\Common.pdb
+E:\Source\DesignPatterns\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

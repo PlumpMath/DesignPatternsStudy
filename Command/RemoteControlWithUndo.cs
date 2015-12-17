@@ -50,7 +50,7 @@ namespace Command
             undoCommand.Undo();
         }
 
-        public string ToString()
+        public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("\n-----Remote Control With Undo-----\n");

@@ -2,7 +2,7 @@
 
 namespace DesignPattern.Test
 {
-    public interface MemberStrategy
+    public interface IMemberStrategy
     {
         /**
          * 计算图书的价格
@@ -12,7 +12,7 @@ namespace DesignPattern.Test
         double CalcPrice(double booksPrice);
     }
 
-    public class PrimaryMemberStrategy : MemberStrategy
+    public class PrimaryMemberStrategy : IMemberStrategy
     {
         public double CalcPrice(double booksPrice)
         {
@@ -21,7 +21,7 @@ namespace DesignPattern.Test
         }
     }
 
-    public class IntermediateMemberStrategy : MemberStrategy
+    public class IntermediateMemberStrategy : IMemberStrategy
     {
         public double CalcPrice(double booksPrice)
         {
@@ -30,7 +30,7 @@ namespace DesignPattern.Test
         }
     }
 
-    public class AdvancedMemberStrategy : MemberStrategy
+    public class AdvancedMemberStrategy : IMemberStrategy
     {
         public double CalcPrice(double booksPrice)
         {
@@ -42,13 +42,13 @@ namespace DesignPattern.Test
     public class Price
     {
         //持有一个具体的策略对象
-        private MemberStrategy strategy;
+        private IMemberStrategy strategy;
 
         /**
          * 构造函数，传入一个具体的策略对象
          * @param strategy    具体的策略对象
          */
-        public Price(MemberStrategy strategy)
+        public Price(IMemberStrategy strategy)
         {
             this.strategy = strategy;
         }
@@ -58,7 +58,7 @@ namespace DesignPattern.Test
          * @param booksPrice    图书的原价
          * @return    计算出打折后的价格
          */
-        public double quote(double booksPrice)
+        public double Quote(double booksPrice)
         {
             return this.strategy.CalcPrice(booksPrice);
         }
@@ -73,7 +73,7 @@ namespace DesignPattern.Test
             //创建环境
             var price = new Price(strategy);
             //计算价格
-            double quote = price.quote(300);
+            double quote = price.Quote(300);
             Console.WriteLine("图书的最终价格为：" + quote);
         }
     }

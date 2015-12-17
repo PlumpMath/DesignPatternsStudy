@@ -3,3 +3,9 @@ E:\GitHubSource\ZSharp\Demos\DesignPatterns\FactoryPattern\bin\Debug\MazeGame.ex
 E:\GitHubSource\ZSharp\Demos\DesignPatterns\FactoryPattern\bin\Debug\MazeGame.pdb
 E:\GitHubSource\ZSharp\Demos\DesignPatterns\FactoryPattern\obj\Debug\MazeGame.exe
 E:\GitHubSource\ZSharp\Demos\DesignPatterns\FactoryPattern\obj\Debug\MazeGame.pdb
+E:\Source\DesignPatterns\MazeGame\bin\Debug\MazeGame.exe.config
+E:\Source\DesignPatterns\MazeGame\bin\Debug\MazeGame.exe
+E:\Source\DesignPatterns\MazeGame\bin\Debug\MazeGame.pdb
+E:\Source\DesignPatterns\MazeGame\obj\Debug\MazeGame.csprojResolveAssemblyReference.cache
+E:\Source\DesignPatterns\MazeGame\obj\Debug\MazeGame.exe
+E:\Source\DesignPatterns\MazeGame\obj\Debug\MazeGame.pdb
